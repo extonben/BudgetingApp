@@ -67,7 +67,7 @@
             }
 
             const appContainer = document.getElementById('app');
-            const CORRECT_PASSWORD = 'extonben'; // 
+            const CORRECT_PASSWORD = 'extonben'; // CHANGE PASSWORD!
 
             // --- State Management using local variables and localStorage ---
             let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
@@ -443,8 +443,8 @@
                 const messageEl = document.getElementById('loginMessage');
                 if (password === CORRECT_PASSWORD) {
                     messageEl.style.display = 'none';
-                    // Save login state to session storage to avoid re-logging in on reload
-                    sessionStorage.setItem('isLoggedIn', 'true');
+                    // Save login state to local storage to avoid re-logging in on reload
+                    localStorage.setItem('isLoggedIn', 'true');
                     preEnterSubscriptions();
                     render();
                 } else {
@@ -577,7 +577,7 @@
             }
 
             // --- Initialisation ---
-            if (sessionStorage.getItem('isLoggedIn') === 'true') {
+            if (localStorage.getItem('isLoggedIn') === 'true') {
                 const today = new Date();
                 selectedMonthYear = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
                 preEnterSubscriptions();
